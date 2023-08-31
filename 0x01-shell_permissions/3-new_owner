@@ -1,2 +1,2 @@
 #!/bin/bash
-sude chown hello betty
+sude chown betty hello
