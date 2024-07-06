@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #scripte the display "best school" ten(10) times
 
-its_me = 0
-while [ $its_me -lt 10 ]
+counter = 0
+while [ $counter -lt 10 ]
 do
 	echo "Best School"
-	(( its_me ++))
+	(( counter ++ ))
 done
