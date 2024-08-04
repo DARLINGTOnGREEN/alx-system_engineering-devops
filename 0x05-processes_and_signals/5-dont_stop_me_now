@@ -3,4 +3,4 @@
 # This script kills a process using command kill
 # shellcheck disable=SC2009
 
-kill "$(ps -x | grep '[4]-to_infinity_and_beyond' | awk '{print $1}')"
+kill "$(ps -x | pgrep -f beyond)"

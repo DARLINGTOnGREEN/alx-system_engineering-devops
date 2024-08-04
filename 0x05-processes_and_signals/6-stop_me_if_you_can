@@ -3,4 +3,4 @@
 # This script kills 4-to_infinity_and_beyond without kill or killall
 # shellcheck disable=SC2009
 
-pkill -f '4-to_infinity_and_beyond'
+pkill -f beyond
