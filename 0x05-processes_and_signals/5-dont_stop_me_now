@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
 # This script kills a process using command kill
 # shellcheck disable=SC2009
-
 kill "$(ps -x | pgrep -f beyond)"
