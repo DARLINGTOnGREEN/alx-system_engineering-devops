@@ -3,17 +3,22 @@
 # Displays To infinity and beyond indefinitely
 # Displays I hate the kill command when receiving a SIGTERM signal
 # Displays Y U no love me?! when receiving a SIGINT signal
-# Deletes the file /var/run/holbertonscript.pid and terminate itself when receiving a SIGQUIT or SIGTERM signal
+# Deletes the file /var/run/holbertonscript.pid and terminates itself when receiving a SIGQUIT or SIGTERM signal
 
-function love() {
-    rm /var/run/holbertonscript.pid
-    exit
+function cleanup() {
+    rm -f /var/run/holbertonscript.pid
+    exit 0
 }
 
-trap "echo I hate the kill command;love" SIGTERM
-trap "echo Y U no love me?!;love" SIGINT
+trap "echo I hate the kill command; cleanup" SIGTERM
+trap "echo Y U no love me?!; cleanup" SIGINT
+trap "cleanup" SIGQUIT
 
-echo $$ >> /var/run/holbertonscript.pid
+# Create the PID file
+echo $$ > /var/run/holbertonscript.pid
+
+# Display the message indefinitely
 while true; do
-    echo To infinity and beyond;
+    echo "To infinity and beyond"
+    sleep 1
 done
