@@ -1,3 +1,2 @@
 #!/usr/bin/env ruby
-# 100-textme.rb
-puts ARGV[0].scan(/(?<=from|to|flags):(\+?\w+|[-?[0-1]:?]+)/).join(',')
+puts ARGV[0].scan(/\[from:(.*?)\]\s\[to:(.*?)\]\s\[flags:(.*?)\]/).map { |match| match.join(',') }.join("\n")
