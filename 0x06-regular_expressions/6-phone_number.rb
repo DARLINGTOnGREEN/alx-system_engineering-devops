@@ -1,3 +1,3 @@
 #!/usr/bin/env ruby
-# 1-repetition_token_0.rb
-puts ARGV[0].scan(/hb{0,1}tn/).join
+# 6-phone_number.rb
+puts ARGV[0].scan(/^[0-9]{10}$/).join
