@@ -35,8 +35,3 @@ def number_of_subscribers(subreddit):
     else:
         print(f"Error {response.status_code}: {response.reason}")
         return 0
-
-
-subreddit = input("Enter a subreddit: ")
-subscribers = number_of_subscribers(subreddit)
-print(f"The subreddit '{subreddit}' has {subscribers} subscribers.")
