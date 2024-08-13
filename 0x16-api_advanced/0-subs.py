@@ -1,27 +1,41 @@
 #!/usr/bin/python3
 """
-This module contains a function to query the Reddit API and return the number of subscribers for a given subreddit.
+Function that queries the Reddit API and returns the number of subscribers
+(not active users, total subscribers) for a given subreddit.
+If an invalid subreddit is given, the function should return 0.
 """
 
 import requests
-
+import time
 
 def number_of_subscribers(subreddit):
     """
-    Queries the Reddit API and returns the number of subscribers for a given subreddit.
-    
-    Args:
-        subreddit (str): The name of the subreddit.
-    
-    Returns:
-        int: The number of subscribers for the subreddit, or 0 if the subreddit is invalid.
+    Function that queries the Reddit API.
+    - If not a valid subreddit, return 0.
     """
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {"User-Agent": "python:subreddit_subscriber_counter:v1.0 (by /u/your_username)"}
-    response = requests.get(url, headers=headers, allow_redirects=False)
+    # Validate the subreddit input
+    if not subreddit or not isinstance(subreddit, str):
+        return 0
     
-    if response.status_code == 200:
-        data = response.json()
-        return data["data"]["subscribers"]
-    else:
+    # Set a more descriptive User-Agent header
+    headers = {"User-Agent": "MyApp/0.0.1"}
+
+    try:
+        # Simple delay to avoid hitting rate limits (if needed)
+        time.sleep(1)
+        
+        # Make the API request
+        req = requests.get(
+            "https://www.reddit.com/r/{}/about.json".format(subreddit),
+            headers=headers,
+        )
+
+        # Check if the request was successful
+        if req.status_code == 200:
+            # Safely parse the JSON response
+            return req.json().get("data", {}).get("subscribers", 0)
+        else:
+            return 0
+    except (requests.RequestException, ValueError):
+        # Handle exceptions related to the request or JSON parsing
         return 0
