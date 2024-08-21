@@ -16,7 +16,7 @@ def get_number_of_subscribers(subreddit: str) -> int:
         int: The number of subscribers, or 0 if the request fails.
     """
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {"User-Agent": "Mozilla/5.0"}
+    headers = {"User-Agent": "Darlington"}
     response = requests.get(url, headers=headers, allow_redirects=False)
 
     if response.status_code == 200:
