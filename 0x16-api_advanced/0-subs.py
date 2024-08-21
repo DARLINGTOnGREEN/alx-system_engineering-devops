@@ -6,6 +6,7 @@ Script that queries subscribers on a given Reddit subreddit.
 import requests
 
 def get_number_of_subscribers(subreddit: str) -> int:
+
     """
     Return the total number of subscribers on a given subreddit.
 
